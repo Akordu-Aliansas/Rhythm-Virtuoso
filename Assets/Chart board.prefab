@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 994a374494ee841419e39bd0c6a8b331, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8f17aa5803b08dc40829e31e7b75f70d, type: 2}
     - target: {fileID: 919132149155446097, guid: 994a374494ee841419e39bd0c6a8b331, type: 3}
       propertyPath: m_Name
       value: Chart board
@@ -112,4 +116,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 918939573039293872}
-  moveSpeed: 0
+  moveSpeed: 1
+  deadZone: 0

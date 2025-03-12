@@ -4,6 +4,7 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody rigidbody;
     public float moveSpeed;
+    public float deadZone = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,5 +15,6 @@ public class Movement : MonoBehaviour
     void Update()
     {
         rigidbody.position += Vector3.back * Time.deltaTime * moveSpeed;
+        if (rigidbody.position.z <= deadZone) Destroy(gameObject);
     }
 }
