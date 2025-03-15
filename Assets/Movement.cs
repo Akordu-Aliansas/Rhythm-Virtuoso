@@ -3,12 +3,13 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public Rigidbody rigidbody;
-    public float moveSpeed;
+    public MoveSpeedControl control;
     public float deadZone = 0;
+    private float moveSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        moveSpeed = control.moveSpeed;
     }
 
     // Update is called once per frame

@@ -116,5 +116,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 918939573039293872}
-  moveSpeed: 1
+  control: {fileID: 11400000, guid: 698cfa0582ca7094b9969f1b9d0417e2, type: 2}
   deadZone: 0

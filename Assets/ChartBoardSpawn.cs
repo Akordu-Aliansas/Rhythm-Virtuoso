@@ -3,11 +3,15 @@ using UnityEngine;
 public class ChartBoardSpawn : MonoBehaviour
 {
     public GameObject ChartBoard;
-    public float spawnRate = 2;
+    public MoveSpeedControl control;
+    private float spawnRate;
     private float timer = 0;
+    private float moveSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        moveSpeed = control.moveSpeed;
+        spawnRate = 4 / moveSpeed;
         Instantiate(ChartBoard, transform.position, ChartBoard.transform.rotation);
         Instantiate(ChartBoard, transform.position + Vector3.back * 4, ChartBoard.transform.rotation);
         Instantiate(ChartBoard, transform.position + Vector3.back * 8, ChartBoard.transform.rotation);
