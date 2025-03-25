@@ -25,6 +25,6 @@ public class NoteSpawner : MonoBehaviour
     private void SpawnNote(int lane)
     {
         Transform laneTransform = lanes[lane];  // Get the lane position
-        Instantiate(notePrefab, laneTransform.position, Quaternion.identity);  // Instantiate the note prefab
+        Instantiate(notePrefab, laneTransform.position, notePrefab.transform.rotation);  // Instantiate the note prefab
     }
 }
