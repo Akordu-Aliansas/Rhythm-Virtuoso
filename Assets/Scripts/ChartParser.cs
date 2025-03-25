@@ -6,7 +6,7 @@ public class ChartParser : MonoBehaviour
     public TextAsset chartFile; // Assign in Inspector or load dynamically
     public List<NoteData> notes = new List<NoteData>();
 
-    public TickRateObject tickRateObject;
+    public TickRate tickRate;
 
 
     [System.Serializable]
@@ -56,7 +56,7 @@ public class ChartParser : MonoBehaviour
                     int tick = int.Parse(parts[0]);  // Tick position
                     int lane = int.Parse(parts[3]);  // Lane (0-4)
 
-                    float time = TickToSeconds(tick, tickRateObject.tickRate.bpm, tickRateObject.tickRate.resolution);
+                    float time = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
                     notes.Add(new NoteData { time = time, lane = lane });
                 }
             }

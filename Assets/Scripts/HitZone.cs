@@ -22,6 +22,7 @@ public class HitZone : MonoBehaviour
             Note note = other.GetComponent<Note>();
             note.SetCanBeHit(false);
             activeNotes.Remove(note);
+            Debug.Log("Miss");
         }
     }
 
