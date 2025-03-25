@@ -56,10 +56,12 @@ public class ChartParser : MonoBehaviour
                 {
                     int tick = int.Parse(parts[0]);  // Tick position
                     int lane = int.Parse(parts[3]);  // Lane (0-4)
-
-                    float time = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
-                    notes.Add(new NoteData { time = time - timeToSubtract, lane = lane });
-                    timeToSubtract = time;
+                    if(lane < 5)
+                    {
+                        float time = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
+                        notes.Add(new NoteData { time = time - timeToSubtract, lane = lane });
+                        timeToSubtract = time;
+                    }
                 }
             }
         }
