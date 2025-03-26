@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ChartParser : MonoBehaviour
@@ -26,7 +27,7 @@ public class ChartParser : MonoBehaviour
 
         string[] lines = chartFile.text.Split('\n');
         bool inNotesSection = false;
-
+        float timeToSubtract = 0;
         foreach (string line in lines)
         {
             string trimmed = line.Trim();
@@ -55,9 +56,12 @@ public class ChartParser : MonoBehaviour
                 {
                     int tick = int.Parse(parts[0]);  // Tick position
                     int lane = int.Parse(parts[3]);  // Lane (0-4)
-
-                    float time = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
-                    notes.Add(new NoteData { time = time, lane = lane });
+                    if(lane < 5)
+                    {
+                        float time = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
+                        notes.Add(new NoteData { time = time - timeToSubtract, lane = lane });
+                        timeToSubtract = time;
+                    }
                 }
             }
         }
