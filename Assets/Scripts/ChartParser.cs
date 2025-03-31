@@ -8,13 +8,14 @@ public class ChartParser : MonoBehaviour
     public List<NoteData> notes = new List<NoteData>();
 
     public TickRate tickRate;
-
+    public MoveSpeedControl movementSpeed;
 
     [System.Serializable]
     public class NoteData
     {
         public float time; // Time in seconds
         public int lane;   // Lane (0-4)
+        public float holdTime; // Hold time in seconds
     }
 
     public void ParseChart()
@@ -24,10 +25,10 @@ public class ChartParser : MonoBehaviour
             Debug.LogError("Chart file is missing!");
             return;
         }
-
+        float delayToHitzone = (4.5f / movementSpeed.moveSpeed);
+        if (delayToHitzone > tickRate.waitTime) tickRate.waitTime = delayToHitzone;
         string[] lines = chartFile.text.Split('\n');
         bool inNotesSection = false;
-        float timeToSubtract = 0;
         foreach (string line in lines)
         {
             string trimmed = line.Trim();
@@ -56,11 +57,12 @@ public class ChartParser : MonoBehaviour
                 {
                     int tick = int.Parse(parts[0]);  // Tick position
                     int lane = int.Parse(parts[3]);  // Lane (0-4)
-                    if(lane < 5)
+                    int holdTick = int.Parse(parts[4]); // Hold time
+                    if (lane < 5)
                     {
                         float time = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
-                        notes.Add(new NoteData { time = time - timeToSubtract, lane = lane });
-                        timeToSubtract = time;
+                        float holdTime = TickToSeconds(holdTick, tickRate.bpm, tickRate.resolution);
+                        notes.Add(new NoteData { time = time + tickRate.waitTime - delayToHitzone, lane = lane, holdTime = holdTime });
                     }
                 }
             }

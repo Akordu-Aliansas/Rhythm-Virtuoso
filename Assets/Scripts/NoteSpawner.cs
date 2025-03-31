@@ -1,30 +1,37 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static ChartParser;
 
 public class NoteSpawner : MonoBehaviour
 {
     public ChartParser chartParser;  // Reference to ChartParser
     public GameObject notePrefab;   // Note prefab
-    public Transform[] lanes;       // Assign lane positions in Inspector
+    public LaneSpawner[] lanes;       // Assign lane positions in Inspector
+    public Material[] setMaterial;    // Set material of note
+    public List<NoteData>[] laneNotes;
 
     private void Start()
     {
-        chartParser.ParseChart();  // Parse the chart data
-        StartCoroutine(SpawnNotes());  // Start spawning notes
-    }
-
-    private IEnumerator SpawnNotes()
-    {
-        foreach (var note in chartParser.notes)
+        laneNotes = new List<NoteData>[5];
+        for(int i = 0; i < laneNotes.Length; i++)
         {
-            yield return new WaitForSeconds(note.time);  // Wait for the correct time
-            SpawnNote(note.lane);  // Spawn note at the correct lane
+            laneNotes[i] = new List<NoteData>();
+        }
+        chartParser.ParseChart();  // Parse the chart data
+        FilterNotesByLane();
+        for (int i = 0; i < laneNotes.Length; i++)
+        {
+            lanes[i].StartLaneSpawn();
         }
     }
 
-    private void SpawnNote(int lane)
+    private void FilterNotesByLane()
     {
-        Transform laneTransform = lanes[lane];  // Get the lane position
-        Instantiate(notePrefab, laneTransform.position, notePrefab.transform.rotation);  // Instantiate the note prefab
+        foreach(var note in chartParser.notes)
+        {
+            laneNotes[note.lane].Add(note);
+        }
     }
 }

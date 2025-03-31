@@ -7,5 +7,4 @@ public class TickRate : ScriptableObject
     public float bpm = 120;
     public int resolution = 192;
     public float waitTime = 0;
-    private float timePerTick;
 }
