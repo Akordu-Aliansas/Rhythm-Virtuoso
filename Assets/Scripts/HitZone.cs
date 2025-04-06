@@ -46,4 +46,8 @@ public class HitZone : MonoBehaviour
 
         return closestNote;
     }
+    public List<Note> GetActiveNotes()
+    {
+        return activeNotes;
+    }
 }
