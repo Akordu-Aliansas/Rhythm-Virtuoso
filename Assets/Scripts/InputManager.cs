@@ -18,25 +18,18 @@ public class InputManager : MonoBehaviour
 
     void CheckForHit()
     {
-        GameObject[] notes = GameObject.FindGameObjectsWithTag("Note");
-
-        foreach (GameObject noteObj in notes)
+        bool hitRegistered = false;
+        foreach (Note note in hitZone.GetActiveNotes())
         {
-            Note noteScript = noteObj.GetComponent<Note>();
+            if (note == null || !note.CanBeHit()) continue;
 
-            // Skip if the note has been destroyed (null)
-            if (noteScript == null)
-                continue;
-
-            if (noteScript.CanBeHit())
-            {
-                Debug.Log("Hit!");
-                scoreManager.AddScore(100);  // Add score for hitting the note
-                noteScript.DestroyNote();
-                return; // Ensures only one note is hit per press
-            }
+            Debug.Log("Hit!");
+            scoreManager.AddScore(100);
+            note.DestroyNote();
+            hitRegistered = true;
         }
 
-        Debug.Log("Miss!");
+        if (!hitRegistered)
+            Debug.Log("Miss!");
     }
 }
