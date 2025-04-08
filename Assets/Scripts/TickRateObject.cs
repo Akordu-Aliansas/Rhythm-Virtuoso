@@ -15,6 +15,7 @@ public class TickRateObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > tickRate.waitTime) tickRate.currentTick = (Time.time - tickRate.waitTime) * timePerTick;
+        if (AudioManager.Instance.GetSongTime() > tickRate.waitTime)
+            tickRate.currentTick = (AudioManager.Instance.GetSongTime() - tickRate.waitTime) * timePerTick;
     }
 }

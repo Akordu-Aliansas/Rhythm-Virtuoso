@@ -10,6 +10,8 @@ public class ChartParser : MonoBehaviour
     public TickRate tickRate;
     public MoveSpeedControl movementSpeed;
 
+    public AudioManager audioManager;
+
     [System.Serializable]
     public class NoteData
     {
@@ -26,6 +28,7 @@ public class ChartParser : MonoBehaviour
             return;
         }
         float delayToHitzone = (4.5f / movementSpeed.moveSpeed);
+        tickRate.waitTime = Mathf.Max(delayToHitzone, audioManager.songDelay);
         if (delayToHitzone > tickRate.waitTime) tickRate.waitTime = delayToHitzone;
         string[] lines = chartFile.text.Split('\n');
         bool inNotesSection = false;

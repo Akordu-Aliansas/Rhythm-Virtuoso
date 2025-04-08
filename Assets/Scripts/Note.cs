@@ -36,6 +36,7 @@ public class Note : MonoBehaviour
         {
             Destroy(gameObject); // Destroy the note when it passes Z = 0 without being hit
         }
+        Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y, 0), Color.red);
     }
 
     public void SetCanBeHit(bool state)

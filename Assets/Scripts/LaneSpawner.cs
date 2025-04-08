@@ -22,10 +22,15 @@ public class LaneSpawner : MonoBehaviour
 
     private IEnumerator SpawnNotes()
     {
+        float audioStartTime = AudioManager.Instance.GetSongTime();
+
         foreach (var note in notes)
         {
-            yield return new WaitForSeconds(note.time - Time.time);  // Wait for the correct time
-            SpawnNote();  // Spawn note at the correct lane
+            float waitDuration = note.time - (AudioManager.Instance.GetSongTime() - audioStartTime);
+            if (waitDuration > 0)
+                yield return new WaitForSeconds(waitDuration);
+
+            SpawnNote();
         }
     }
 

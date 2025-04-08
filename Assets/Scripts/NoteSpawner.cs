@@ -14,6 +14,7 @@ public class NoteSpawner : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.PlaySong();
         laneNotes = new List<NoteData>[5];
         for(int i = 0; i < laneNotes.Length; i++)
         {
