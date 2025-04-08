@@ -5,9 +5,12 @@ public class TickRateObject : MonoBehaviour
 {
     public TickRate tickRate;
     private float timePerTick;
+    FadeInOut fade;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        fade = FindAnyObjectByType<FadeInOut>();
+        fade.FadeOut();
         tickRate.currentTick = 0;
         timePerTick = 60f / tickRate.bpm * tickRate.resolution;
     }
@@ -15,7 +18,7 @@ public class TickRateObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (AudioManager.Instance.GetSongTime() > tickRate.waitTime)
-            tickRate.currentTick = (AudioManager.Instance.GetSongTime() - tickRate.waitTime) * timePerTick;
+        if (Time.timeSinceLevelLoad > tickRate.waitTime)
+            tickRate.currentTick = (Time.timeSinceLevelLoad - tickRate.waitTime) * timePerTick;
     }
 }

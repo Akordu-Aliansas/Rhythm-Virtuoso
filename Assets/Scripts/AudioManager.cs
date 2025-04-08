@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -6,7 +7,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip songClip;
-    public float songDelay = 2f; // Time before song starts after game load
+    public TickRate tickRate;
 
     void Awake()
     {
@@ -19,7 +20,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySong()
     {
-        audioSource.PlayDelayed(songDelay);
+        StartCoroutine(_PlaySong());
+    }
+    private IEnumerator _PlaySong()
+    {
+        yield return new WaitForSeconds(tickRate.waitTime - Time.timeSinceLevelLoad);
+        audioSource.Play();
     }
 
     public float GetSongTime()
