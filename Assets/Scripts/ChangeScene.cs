@@ -27,4 +27,12 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("SongSelect");
     }
+    public void ChangeToMainMenuScene()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void doExitGame()
+    {
+        Application.Quit();
+    }
 }

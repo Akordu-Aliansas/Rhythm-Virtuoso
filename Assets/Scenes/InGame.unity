@@ -443,6 +443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e692e680d364acb41a55342731a4df13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24300002, guid: 9028f6b8be39dbf4d9ce2cd930b624a3, type: 2}
   audioSource: {fileID: 0}
   songClip: {fileID: 8300000, guid: 157a86a3a1c89134ba53c309c23d58a0, type: 3}
   tickRate: {fileID: 11400000, guid: d4e8dd56ed21c6d49bc25393c319f314, type: 2}
@@ -1124,7 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454e60fbb1918d643a5418d28bc7e481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chartFile: {fileID: 4900000, guid: 56e4029db35395f43b08cff4a9a3f5d8, type: 3}
+  chartFile: {fileID: 4900000, guid: 9a103f2d27b841b41ad3ae5ab92a3c13, type: 3}
   notes: []
   tickRate: {fileID: 11400000, guid: d4e8dd56ed21c6d49bc25393c319f314, type: 2}
   movementSpeed: {fileID: 11400000, guid: 698cfa0582ca7094b9969f1b9d0417e2, type: 2}
