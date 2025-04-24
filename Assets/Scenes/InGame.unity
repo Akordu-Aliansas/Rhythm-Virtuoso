@@ -1677,6 +1677,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chartParser: {fileID: 748288925}
   notePrefab: {fileID: 5509501800747204817, guid: b969c58c3e6f95e48bef143c72f87c83, type: 3}
+  heldNotePrefab: {fileID: 4213389175285553817, guid: 82d6128bc0eb2a84ba9ee52c76fb039a, type: 3}
+  movementSpeed: {fileID: 11400000, guid: 698cfa0582ca7094b9969f1b9d0417e2, type: 2}
   lanes:
   - {fileID: 631165929}
   - {fileID: 992611800}

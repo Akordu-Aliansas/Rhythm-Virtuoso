@@ -8,6 +8,8 @@ public class NoteSpawner : MonoBehaviour
 {
     public ChartParser chartParser;  // Reference to ChartParser
     public GameObject notePrefab;   // Note prefab
+    public GameObject heldNotePrefab;
+    public MoveSpeedControl movementSpeed;
     public LaneSpawner[] lanes;       // Assign lane positions in Inspector
     public Material[] setMaterial;    // Set material of note
     public List<NoteData>[] laneNotes;
