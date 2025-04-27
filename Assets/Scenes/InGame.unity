@@ -444,9 +444,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24300002, guid: 9028f6b8be39dbf4d9ce2cd930b624a3, type: 2}
-  audioSource: {fileID: 0}
   songClip: {fileID: 8300000, guid: 157a86a3a1c89134ba53c309c23d58a0, type: 3}
   tickRate: {fileID: 11400000, guid: d4e8dd56ed21c6d49bc25393c319f314, type: 2}
+  hitSound: {fileID: 8300000, guid: ce67feff7c7f80041a7d1268a4df4694, type: 3}
 --- !u!1 &476065683
 GameObject:
   m_ObjectHideFlags: 0

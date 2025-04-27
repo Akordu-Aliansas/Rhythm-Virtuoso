@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
             if (note == null || !note.CanBeHit()) continue;
 
             Debug.Log("Hit!");
+            AudioManager.Instance.PlayHitSound();
             scoreManager.AddScore(100);
             note.DestroyNote();
             hitRegistered = true;

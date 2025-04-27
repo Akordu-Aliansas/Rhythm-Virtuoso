@@ -5,33 +5,61 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
+
+    [Header("Music Settings")]
     public AudioMixerGroup mixer;
-    public AudioSource audioSource;
     public AudioClip songClip;
     public TickRate tickRate;
+    private AudioSource musicSource;
+
+    [Header("Sound Effects")]
+    public AudioClip hitSound;
+    private AudioSource sfxSource;
 
     void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
 
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = songClip;
-        audioSource.outputAudioMixerGroup = mixer;
+            // Set up music source
+            musicSource = gameObject.AddComponent<AudioSource>();
+            musicSource.clip = songClip;
+            musicSource.outputAudioMixerGroup = mixer;
+
+            // Set up SFX source
+            sfxSource = gameObject.AddComponent<AudioSource>();
+            sfxSource.playOnAwake = false;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void PlaySong()
     {
-        StartCoroutine(_PlaySong());
+        StartCoroutine(StartSongWithDelay());
     }
-    private IEnumerator _PlaySong()
+
+    private IEnumerator StartSongWithDelay()
     {
         yield return new WaitForSeconds(tickRate.waitTime - Time.timeSinceLevelLoad);
-        audioSource.Play();
+        musicSource.Play();
+    }
+
+    // Call this when hitting a note
+    public void PlayHitSound()
+    {
+        if (hitSound != null)
+        {
+            sfxSource.PlayOneShot(hitSound);
+        }
     }
 
     public float GetSongTime()
     {
-        return audioSource.time;
+        return musicSource.time;
     }
 }
