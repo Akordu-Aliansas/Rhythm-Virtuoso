@@ -37,6 +37,11 @@ public class Note : MonoBehaviour
             Destroy(gameObject); // Destroy the note when it passes Z = 0 without being hit
         }
         Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y, 0), Color.red);
+        if (transform.position.z <= 0 && !hasBeenHit && !canBeHit)
+        {
+            ComboCounter.Instance.ResetCombo(); // Add this line
+            Destroy(gameObject);
+        }
     }
 
     public void SetCanBeHit(bool state)
@@ -52,6 +57,7 @@ public class Note : MonoBehaviour
     public void DestroyNote()
     {
         hasBeenHit = true;  // Mark the note as hit
+        ComboCounter.Instance.IncrementCombo(); // Add this line
         Destroy(gameObject);  // Destroy the note
     }
 }

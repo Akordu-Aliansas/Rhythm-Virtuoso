@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     // This function will be called to update the score.
     public void AddScore(int points)
     {
-        score += points;
+        score += points * ComboCounter.Instance.GetCurrentMultiplier();
         UpdateScoreDisplay();
     }
 
