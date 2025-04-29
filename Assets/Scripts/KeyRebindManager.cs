@@ -62,13 +62,50 @@ public class KeyRebindManager : MonoBehaviour
 
     void SetLaneKey(int laneIndex, Key newKey)
     {
-        waitingForKey = false;
-        string prefKey = $"Lane{laneIndex}Key";
+        if (IsKeyAlreadyUsed(newKey, laneIndex))
+        {
+            Debug.LogWarning($"Key '{newKey}' is already assigned to another lane. Choose a different key.");
+            CancelRebind(); // Optional: reset display immediately
+            return;
+        }
 
+        waitingForKey = false;
+
+        string prefKey = $"Lane{laneIndex}Key";
         PlayerPrefs.SetString(prefKey, newKey.ToString());
         PlayerPrefs.Save();
 
         UpdateKeyTextDisplay();
+    }
+    bool IsKeyAlreadyUsed(Key key, int currentLane)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (i == currentLane) continue;
+
+            string otherPrefKey = $"Lane{i}Key";
+            string saved = PlayerPrefs.GetString(otherPrefKey, GetDefaultKey(i).ToString());
+
+            if (System.Enum.TryParse<Key>(saved, out Key otherKey))
+            {
+                if (otherKey == key)
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    Key GetDefaultKey(int laneIndex)
+    {
+        return laneIndex switch
+        {
+            0 => Key.A,
+            1 => Key.S,
+            2 => Key.D,
+            3 => Key.F,
+            4 => Key.G,
+            _ => Key.None
+        };
     }
 
     void CancelRebind()
