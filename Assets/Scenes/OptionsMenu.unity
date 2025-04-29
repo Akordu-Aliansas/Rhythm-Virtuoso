@@ -2293,6 +2293,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881385288}
   m_CullTransparentMesh: 1
+--- !u!1 &913054468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 913054469}
+  - component: {fileID: 913054470}
+  m_Layer: 5
+  m_Name: KeybindManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &913054469
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913054468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1830527895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &913054470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913054468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5824476770a9e9841b187d796c6f54cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lane1InputManager: {fileID: 0}
+  lane2InputManager: {fileID: 0}
+  lane3InputManager: {fileID: 0}
+  lane4InputManager: {fileID: 0}
+  lane5InputManager: {fileID: 0}
+  lane1KeyText: {fileID: 1975537922}
+  lane2KeyText: {fileID: 2145852989}
+  lane3KeyText: {fileID: 815875818}
+  lane4KeyText: {fileID: 881385290}
+  lane5KeyText: {fileID: 793034028}
+  lane1RebindButton: {fileID: 284151694}
+  lane2RebindButton: {fileID: 746974470}
+  lane3RebindButton: {fileID: 692970028}
+  lane4RebindButton: {fileID: 49945232}
+  lane5RebindButton: {fileID: 2131226910}
 --- !u!1 &940950263
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,6 +5024,7 @@ RectTransform:
   - {fileID: 1877410113}
   - {fileID: 671131569}
   - {fileID: 121676400}
+  - {fileID: 913054469}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
