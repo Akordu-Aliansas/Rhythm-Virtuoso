@@ -603,6 +603,7 @@ MonoBehaviour:
   keyToPress: 25
   hitZone: {fileID: 199132061}
   scoreManager: {fileID: 2143289010}
+  playerPrefKey: Lane3Key
 --- !u!1 &589350981
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +651,7 @@ MonoBehaviour:
   keyToPress: 20
   hitZone: {fileID: 2122616393}
   scoreManager: {fileID: 2143289010}
+  playerPrefKey: Lane1Key
 --- !u!1 &620190647
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +791,7 @@ MonoBehaviour:
   keyToPress: 24
   hitZone: {fileID: 81660769}
   scoreManager: {fileID: 2143289010}
+  playerPrefKey: Lane2Key
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1449,7 @@ MonoBehaviour:
   keyToPress: 18
   hitZone: {fileID: 723613461}
   scoreManager: {fileID: 2143289010}
+  playerPrefKey: Lane0Key
 --- !u!4 &1250679263
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,6 +1986,7 @@ MonoBehaviour:
   keyToPress: 26
   hitZone: {fileID: 396261978}
   scoreManager: {fileID: 2143289010}
+  playerPrefKey: Lane4Key
 --- !u!1 &2122616391
 GameObject:
   m_ObjectHideFlags: 0

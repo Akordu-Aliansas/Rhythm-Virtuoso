@@ -7,6 +7,19 @@ public class InputManager : MonoBehaviour
     public Key keyToPress;  // Use "Key" from the new Input System
     public HitZone hitZone; // Reference to HitZone
     public ScoreManager scoreManager;
+    public string playerPrefKey; // Set this in Inspector: "Lane0Key", "Lane1Key", etc.
+
+    void Awake()
+    {
+        if (PlayerPrefs.HasKey(playerPrefKey))
+        {
+            string savedKey = PlayerPrefs.GetString(playerPrefKey);
+            if (System.Enum.TryParse<Key>(savedKey, out Key parsed))
+            {
+                keyToPress = parsed;
+            }
+        }
+    }
 
     void Update()
     {
