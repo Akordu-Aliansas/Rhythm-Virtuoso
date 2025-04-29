@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+
 
 public class KeyRebindManager : MonoBehaviour
 {
+
+    public TextMeshProUGUI conflictWarningText;
     // UI elements for showing current key bindings
     public TextMeshProUGUI lane1KeyText;
     public TextMeshProUGUI lane2KeyText;
@@ -19,6 +23,7 @@ public class KeyRebindManager : MonoBehaviour
     public Button lane4RebindButton;
     public Button lane5RebindButton;
 
+    private Coroutine warningFadeCoroutine;
     private bool waitingForKey = false;
     private int laneToRebind = -1;
 
@@ -26,7 +31,9 @@ public class KeyRebindManager : MonoBehaviour
     {
         UpdateKeyTextDisplay();
 
-        // Assign rebind button actions
+        conflictWarningText.text = "";
+        conflictWarningText.alpha = 0f; // Force it fully invisible at start
+
         lane1RebindButton.onClick.AddListener(() => BeginRebind(0));
         lane2RebindButton.onClick.AddListener(() => BeginRebind(1));
         lane3RebindButton.onClick.AddListener(() => BeginRebind(2));
@@ -34,8 +41,10 @@ public class KeyRebindManager : MonoBehaviour
         lane5RebindButton.onClick.AddListener(() => BeginRebind(4));
     }
 
+
     void BeginRebind(int laneIndex)
     {
+        conflictWarningText.text = "";
         laneToRebind = laneIndex;
         waitingForKey = true;
 
@@ -64,19 +73,22 @@ public class KeyRebindManager : MonoBehaviour
     {
         if (IsKeyAlreadyUsed(newKey, laneIndex))
         {
-            Debug.LogWarning($"Key '{newKey}' is already assigned to another lane. Choose a different key.");
-            CancelRebind(); // Optional: reset display immediately
+            ShowConflictWarning($"Key '{newKey}' is already in use!");
+            Debug.LogWarning(conflictWarningText.text);
+            CancelRebind();
             return;
         }
 
-        waitingForKey = false;
 
+        waitingForKey = false;
         string prefKey = $"Lane{laneIndex}Key";
         PlayerPrefs.SetString(prefKey, newKey.ToString());
         PlayerPrefs.Save();
 
+        conflictWarningText.text = ""; // Clear warning if successful
         UpdateKeyTextDisplay();
     }
+
     bool IsKeyAlreadyUsed(Key key, int currentLane)
     {
         for (int i = 0; i < 5; i++)
@@ -94,6 +106,20 @@ public class KeyRebindManager : MonoBehaviour
         }
         return false;
     }
+
+    void ShowConflictWarning(string message)
+    {
+        conflictWarningText.text = message;
+        conflictWarningText.alpha = 1f;
+
+        // If a previous fade is running, stop it
+        if (warningFadeCoroutine != null)
+        {
+            StopCoroutine(warningFadeCoroutine);
+        }
+        warningFadeCoroutine = StartCoroutine(FadeOutWarning());
+    }
+
 
     Key GetDefaultKey(int laneIndex)
     {
@@ -157,5 +183,27 @@ public class KeyRebindManager : MonoBehaviour
             }
         }
         return Key.None;
+    }
+    IEnumerator FadeOutWarning()
+    {
+        yield return new WaitForSeconds(2f); // Wait before starting fade (2 seconds)
+
+        float duration = 1f; // Fade out over 1 second
+        float elapsed = 0f;
+        Color originalColor = conflictWarningText.color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            conflictWarningText.color = new Color(
+                originalColor.r,
+                originalColor.g,
+                originalColor.b,
+                Mathf.Lerp(1f, 0f, elapsed / duration)
+            );
+            yield return null;
+        }
+
+        conflictWarningText.text = "";
     }
 }
