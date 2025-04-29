@@ -3,9 +3,10 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     public MoveSpeedControl control;
-    private float speed;  // Speed of note movement along Z-axis
-    private float startZ = 10f;  // Starting position Z
-    private float endZ = 0f;    // End position Z
+    public float speed;  // Speed of note movement along Z-axis
+    public float startZ = 10f;  // Starting position Z
+    public float endZ = 0f;    // End position Z
+    public bool resetsCombo = true;
     private bool canBeHit = false;
     private bool hasBeenHit = false; // Track if the note has been hit
 
@@ -27,19 +28,19 @@ public class Note : MonoBehaviour
             }
             else
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, endZ);
+                Destroy(gameObject);
             }
         }
 
         // If the note reaches Z=0, but it hasn't been hit, destroy it
-        if (transform.position.z <= 0 && !hasBeenHit && !canBeHit)
+        if (transform.position.z <= endZ && !hasBeenHit && !canBeHit)
         {
             Destroy(gameObject); // Destroy the note when it passes Z = 0 without being hit
         }
         Debug.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y, 0), Color.red);
-        if (transform.position.z <= 0 && !hasBeenHit && !canBeHit)
+        if (transform.position.z <= endZ && !hasBeenHit && !canBeHit)
         {
-            ComboCounter.Instance.ResetCombo(); // Add this line
+            if(resetsCombo) ComboCounter.Instance.ResetCombo(); // Add this line
             Destroy(gameObject);
         }
     }

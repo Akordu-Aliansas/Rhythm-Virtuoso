@@ -4,7 +4,7 @@ using UnityEngine;
 public class HitZone : MonoBehaviour
 {
     private List<Note> activeNotes = new List<Note>();
-
+    private HeldNote heldNote = null;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Note"))
@@ -12,6 +12,12 @@ public class HitZone : MonoBehaviour
             Note note = other.GetComponent<Note>();
             note.SetCanBeHit(true);
             activeNotes.Add(note);
+        }
+        if (other.CompareTag("HeldNote"))
+        {
+            HeldNote note = other.GetComponent<HeldNote>();
+            note.SetCanBeHit(true);
+            heldNote = note;
         }
     }
 
@@ -23,6 +29,12 @@ public class HitZone : MonoBehaviour
             note.SetCanBeHit(false);
             activeNotes.Remove(note);
             Debug.Log("Miss");
+        }
+        if (other.CompareTag("HeldNote"))
+        {
+            HeldNote note = other.GetComponent<HeldNote>();
+            note.SetCanBeHit(false);
+            heldNote = null;
         }
     }
 
@@ -46,8 +58,6 @@ public class HitZone : MonoBehaviour
 
         return closestNote;
     }
-    public List<Note> GetActiveNotes()
-    {
-        return activeNotes;
-    }
+    public List<Note> GetActiveNotes() { return activeNotes; }
+    public HeldNote GetHeldNote() { return heldNote; }
 }

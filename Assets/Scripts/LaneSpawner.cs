@@ -27,7 +27,7 @@ public class LaneSpawner : MonoBehaviour
     private IEnumerator SpawnNotes()
     {
         foreach (var note in notes)
-        {       
+        {
             yield return new WaitForSeconds(note.time - Time.timeSinceLevelLoad);
             SpawnNote(note.holdTime);
         }
@@ -37,7 +37,7 @@ public class LaneSpawner : MonoBehaviour
     {
         GameObject currentNote = (GameObject)Instantiate(notePrefab, transform.position, notePrefab.transform.rotation);
         currentNote.GetComponent<Renderer>().material = setMaterial;
-        if(holdTime > 0)
+        if (holdTime > 0)
         {
             GameObject heldNote = (GameObject)Instantiate(heldNotePrefab, transform.position, heldNotePrefab.transform.rotation);
             heldNote.GetComponent<Renderer>().material = setMaterial;

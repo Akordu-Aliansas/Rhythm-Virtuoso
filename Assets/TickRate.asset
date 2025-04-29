@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea4c0ab6033db54399ad67b2a1d5eb7, type: 3}
   m_Name: TickRate
   m_EditorClassIdentifier: 
-  currentTick: 2233.958
+  currentTick: 359.49484
   bpm: 160
   resolution: 192
-  waitTime: 1.125
+  waitTime: 2

@@ -14,6 +14,14 @@ public class InputManager : MonoBehaviour
         {
             CheckForHit();
         }
+        else if (Keyboard.current[keyToPress].isPressed)
+        {
+            CheckForHold();
+        }
+        else if (Keyboard.current[keyToPress].wasReleasedThisFrame)
+        {
+            CheckForRelease();
+        }
     }
 
     void CheckForHit()
@@ -26,11 +34,29 @@ public class InputManager : MonoBehaviour
             Debug.Log("Hit!");
             AudioManager.Instance.PlayHitSound();
             scoreManager.AddScore(100);
+            HeldNote heldNote = hitZone.GetHeldNote();
+            if (heldNote != null && !heldNote.wasReleased) heldNote.isHeld = true;
             note.DestroyNote();
             hitRegistered = true;
         }
 
         if (!hitRegistered)
             Debug.Log("Miss!");
+    }
+    void CheckForHold()
+    {
+        HeldNote note = hitZone.GetHeldNote();
+        if (note != null && note.isHeld)
+        {
+            scoreManager.AddScore(10 * Time.deltaTime);
+        }
+    }
+    void CheckForRelease()
+    {
+        HeldNote note = hitZone.GetHeldNote();
+        if (note != null && note.isHeld)
+        {
+            note.Release();
+        }
     }
 }

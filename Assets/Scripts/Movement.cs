@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public Rigidbody rigidbody;
+    public new Rigidbody rigidbody;
     public MoveSpeedControl control;
     public float deadZone = 0;
     private float moveSpeed;
