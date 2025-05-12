@@ -53,7 +53,7 @@ public class InputManager : MonoBehaviour
             if (note == null || !note.CanBeHit()) continue;
 
             // Calculate hit accuracy
-            float hitAccuracy = Mathf.Abs(note.transform.position.z);
+            float hitAccuracy = Mathf.Abs(note.transform.position.z - hitZone.transform.position.z);
             HitAccuracy accuracy = GetHitAccuracy(hitAccuracy);
 
             // Play appropriate effects
@@ -72,7 +72,8 @@ public class InputManager : MonoBehaviour
 
         if (!hitRegistered)
         {
-            Debug.Log("Miss!");
+            //Debug.Log("Miss!");
+            FindAnyObjectByType<ComboCounter>().ResetCombo();
         }
     }
 

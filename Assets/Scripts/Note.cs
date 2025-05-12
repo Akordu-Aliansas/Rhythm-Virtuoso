@@ -6,8 +6,9 @@ public class Note : MonoBehaviour
     public MoveSpeedControl control;
     public float speed;
     public float startZ = 10f;
-    public float endZ = 0f;
+    public float endZ = 2f;
     public bool resetsCombo = true;
+    public bool isSpecial = false;
 
     [Header("Particle Settings")]
     public ParticleSystem hitParticles; // Assign in Inspector
@@ -16,8 +17,18 @@ public class Note : MonoBehaviour
     private bool hasBeenHit = false;
     private bool particlesInitialized = false;
 
+    public Material setMaterial;    // Set material of note
+    public Material specialMaterial;   // Set material of special notes
+    public new MeshRenderer renderer;
+    private NoteSpawner spawner;
+
     void Start()
     {
+        renderer = GetComponent<MeshRenderer>();
+        spawner = FindAnyObjectByType<NoteSpawner>();
+        isSpecial = spawner.spawnSpecial;
+        if (isSpecial) renderer.material = specialMaterial;
+        else renderer.material = setMaterial;
         speed = control.moveSpeed;
         transform.position = new Vector3(transform.position.x, transform.position.y, startZ);
         InitializeParticles();
@@ -37,6 +48,11 @@ public class Note : MonoBehaviour
 
     void Update()
     {
+        if (isSpecial && !spawner.isSpecial)
+        {
+            renderer.material = setMaterial;
+            isSpecial = false;
+        }
         if (!hasBeenHit)
         {
             // Move the note
@@ -46,7 +62,7 @@ public class Note : MonoBehaviour
             }
             else if (!canBeHit) // Only auto-destroy if not hittable
             {
-                if (resetsCombo) ComboCounter.Instance.ResetCombo();
+                if(resetsCombo) ComboCounter.Instance.ResetCombo();
                 Destroy(gameObject);
             }
         }

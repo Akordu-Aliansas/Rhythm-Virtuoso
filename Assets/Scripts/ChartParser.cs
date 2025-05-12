@@ -6,10 +6,10 @@ public class ChartParser : MonoBehaviour
 {
     public TextAsset chartFile; // Assign in Inspector or load dynamically
     public List<NoteData> notes = new List<NoteData>();
-
+    public List<StarpowerData> specials = new List<StarpowerData>();
     public TickRate tickRate;
     public MoveSpeedControl movementSpeed;
-
+    public float delayToHitzone;
 
     [System.Serializable]
     public class NoteData
@@ -18,7 +18,12 @@ public class ChartParser : MonoBehaviour
         public int lane;   // Lane (0-4)
         public float holdTime; // Hold time in seconds
     }
-
+    [System.Serializable]
+    public class StarpowerData
+    {
+        public float startTime; // Start time
+        public float duration; //  Duration in seconds
+    }
     public void ParseChart()
     {
         if (chartFile == null)
@@ -26,7 +31,7 @@ public class ChartParser : MonoBehaviour
             Debug.LogError("Chart file is missing!");
             return;
         }
-        float delayToHitzone = (4.5f / movementSpeed.moveSpeed);
+        delayToHitzone = (4.5f / movementSpeed.moveSpeed);
         tickRate.waitTime = Mathf.Max(delayToHitzone, tickRate.waitTime);
         if (delayToHitzone > tickRate.waitTime) tickRate.waitTime = delayToHitzone;
         string[] lines = chartFile.text.Split('\n');
@@ -65,6 +70,24 @@ public class ChartParser : MonoBehaviour
                         float time = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
                         float holdTime = TickToSeconds(holdTick, tickRate.bpm, tickRate.resolution);
                         notes.Add(new NoteData { time = time + tickRate.waitTime - delayToHitzone, lane = lane, holdTime = holdTime });
+                    }
+                }
+            }
+            if (inNotesSection && trimmed.Contains("S"))
+            {
+                string[] parts = trimmed.Split(' ');
+
+                // Ensure we have at least 3 parts (tick, S, lane)
+                if (parts.Length >= 3)
+                {
+                    int tick = int.Parse(parts[0]);  // Tick position
+                    int lane = int.Parse(parts[3]);  // Lane (0-4)
+                    int durationTicks = int.Parse(parts[4]); // Hold time
+                    if (lane == 2)
+                    {
+                        float start = TickToSeconds(tick, tickRate.bpm, tickRate.resolution);
+                        float duration = TickToSeconds(durationTicks, tickRate.bpm, tickRate.resolution);
+                        specials.Add(new StarpowerData { startTime = start + tickRate.waitTime - delayToHitzone, duration = duration });
                     }
                 }
             }

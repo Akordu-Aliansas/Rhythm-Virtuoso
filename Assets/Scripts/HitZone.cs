@@ -26,9 +26,13 @@ public class HitZone : MonoBehaviour
         if (other.CompareTag("Note"))
         {
             Note note = other.GetComponent<Note>();
+            if (note.isSpecial) {
+                FindAnyObjectByType<NoteSpawner>().isSpecial = false;
+                FindAnyObjectByType<NoteSpawner>().spawnSpecial = false;
+            }
             note.SetCanBeHit(false);
             activeNotes.Remove(note);
-            Debug.Log("Miss");
+            //Debug.Log("Miss");
         }
         if (other.CompareTag("HeldNote"))
         {
