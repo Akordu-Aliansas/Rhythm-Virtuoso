@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip hitSound;
     private AudioSource sfxSource;
 
-    void Awake()
+    public void PlaySong()
     {
         if (Instance == null)
         {
@@ -36,10 +36,6 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void PlaySong()
-    {
         StartCoroutine(StartSongWithDelay());
     }
 

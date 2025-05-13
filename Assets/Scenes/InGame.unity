@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24300002, guid: 9028f6b8be39dbf4d9ce2cd930b624a3, type: 2}
-  songClip: {fileID: 8300000, guid: 00006e87c47d0d846b4908cac561555d, type: 3}
+  songClip: {fileID: 8300000, guid: ce67feff7c7f80041a7d1268a4df4694, type: 3}
   tickRate: {fileID: 11400000, guid: d4e8dd56ed21c6d49bc25393c319f314, type: 2}
   hitSound: {fileID: 8300000, guid: ce67feff7c7f80041a7d1268a4df4694, type: 3}
 --- !u!1 &465995039
@@ -1198,6 +1198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 465995040}
   - component: {fileID: 465995041}
+  - component: {fileID: 465995042}
   m_Layer: 0
   m_Name: EndScreen
   m_TagString: Untagged
@@ -1239,6 +1240,20 @@ MonoBehaviour:
   menuButton: {fileID: 1039913712}
   audioManager: {fileID: 463679590}
   scoreManager: {fileID: 2143289010}
+  highscoreUpdate: {fileID: 465995042}
+--- !u!114 &465995042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465995039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180280dfcf50f3e43b584b72be936f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songID: 0
 --- !u!1 &476065683
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,6 +3482,7 @@ Transform:
   - {fileID: 363543062}
   - {fileID: 1181741585}
   - {fileID: 465995040}
+  - {fileID: 1498649868}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393239889
@@ -3574,6 +3590,71 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1498649867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498649868}
+  - component: {fileID: 1498649869}
+  m_Layer: 0
+  m_Name: SongManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1498649868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498649867}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1346685848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1498649869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498649867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1d92f61e952944992b24b360c01244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  bpms: 78000000a00000008c000000780000007800000078000000
+  resolutions: c0000000c0000000c0000000c0000000c0000000c0000000
+  audioTracks:
+  - {fileID: 8300000, guid: 00006e87c47d0d846b4908cac561555d, type: 3}
+  - {fileID: 8300000, guid: 157a86a3a1c89134ba53c309c23d58a0, type: 3}
+  - {fileID: 8300000, guid: 3ec1e9610b5624042b76bd8afa25efdc, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  charts:
+  - {fileID: 4900000, guid: 9a103f2d27b841b41ad3ae5ab92a3c13, type: 3}
+  - {fileID: 4900000, guid: 56e4029db35395f43b08cff4a9a3f5d8, type: 3}
+  - {fileID: 4900000, guid: 2f3dcffa6e0e27347b528810b2038f3d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tickRate: {fileID: 11400000, guid: d4e8dd56ed21c6d49bc25393c319f314, type: 2}
+  audioManager: {fileID: 463679590}
+  parser: {fileID: 748288925}
+  spawner: {fileID: 1651239537}
 --- !u!1 &1521690623
 GameObject:
   m_ObjectHideFlags: 0
@@ -3688,6 +3769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5fc3948edcfc24b8879291b8d5a09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 463679590}
   chartParser: {fileID: 748288925}
   notePrefab: {fileID: 5509501800747204817, guid: b969c58c3e6f95e48bef143c72f87c83, type: 3}
   heldNotePrefab: {fileID: 4213389175285553817, guid: 82d6128bc0eb2a84ba9ee52c76fb039a, type: 3}

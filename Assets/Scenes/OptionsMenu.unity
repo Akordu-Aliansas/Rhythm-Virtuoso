@@ -5862,6 +5862,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe60dd9c63cdf3d43845c7bb624e73b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fade: {fileID: 0}
+  changeSong: {fileID: 0}
 --- !u!114 &1830527897
 MonoBehaviour:
   m_ObjectHideFlags: 0

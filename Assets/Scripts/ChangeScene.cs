@@ -4,13 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    FadeInOut fade;
+    public FadeInOut fade;
+    public ChangeSelectedSong changeSong;
     private void Start()
     {
+        changeSong = FindAnyObjectByType<ChangeSelectedSong>();
         fade = FindAnyObjectByType<FadeInOut>();
     }
-    public void ChangeToGameScene()
+    public void ChangeToGameScene(int id)
     {
+        changeSong.selectedSong = id;
         StartCoroutine(_ChangeToGameScene());
     }
     private IEnumerator _ChangeToGameScene()
@@ -30,6 +33,10 @@ public class ChangeScene : MonoBehaviour
     public void ChangeToMainMenuScene()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+    public void ChangeToHighScoreScene()
+    {
+        SceneManager.LoadScene("ScoringBoard");
     }
     public void doExitGame()
     {

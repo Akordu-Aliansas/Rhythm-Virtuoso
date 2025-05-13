@@ -16,12 +16,25 @@ public class HighScoreTable : MonoBehaviour
     private List<Transform> transformList;
     private void Awake()
     {
+        songID = FindAnyObjectByType<ChangeSelectedSong>().selectedSong;
         container = transform.Find("Entries");
         template = container.Find("Template");
         template.gameObject.SetActive(false);
         transformList = new List<Transform>();
-        string jsonString = PlayerPrefs.GetString("highscores"+songID);
+        string jsonString = PlayerPrefs.GetString("highscores" + songID);
         Highscores scores = JsonUtility.FromJson<Highscores>(jsonString);
+        if (scores == null) scores = new Highscores { entryList = new List<HighscoreEntry>() };
+        foreach (HighscoreEntry entry in scores.entryList) AddEntry(entry, container, transformList);
+    }
+    public void ChangePage(bool next)
+    {
+        foreach (Transform transform in transformList) Destroy(transform);
+        if (next && songID < 5) songID++;
+        else if (!next && songID > 0) songID--;
+        transformList = new List<Transform>();
+        string jsonString = PlayerPrefs.GetString("highscores" + songID);
+        Highscores scores = JsonUtility.FromJson<Highscores>(jsonString);
+        if (scores == null) scores = new Highscores { entryList = new List<HighscoreEntry>() };
         foreach (HighscoreEntry entry in scores.entryList) AddEntry(entry, container, transformList);
     }
     private void AddEntry(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
@@ -36,7 +49,7 @@ public class HighScoreTable : MonoBehaviour
         entry.Find("Date").GetComponent<TMP_Text>().text = DateTime.FromBinary(highscoreEntry.date).ToString("d");
         transformList.Add(entry);
     }
-    
+
     private class Highscores { public List<HighscoreEntry> entryList; }
     [Serializable]
     private class HighscoreEntry : IComparable<HighscoreEntry>

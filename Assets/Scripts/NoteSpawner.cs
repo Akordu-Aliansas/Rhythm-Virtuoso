@@ -7,6 +7,7 @@ using static ChartParser;
 
 public class NoteSpawner : MonoBehaviour
 {
+    public AudioManager audioManager;
     public ChartParser chartParser;  // Reference to ChartParser
     public GameObject notePrefab;   // Note prefab
     public GameObject heldNotePrefab;
@@ -16,12 +17,11 @@ public class NoteSpawner : MonoBehaviour
     public List<NoteData>[] laneNotes;
     public bool isSpecial; // Are current notes special
     public bool spawnSpecial;
-
-    private void Start()
+    public void StartSong()
     {
         isSpecial = false;
         laneNotes = new List<NoteData>[5];
-        for(int i = 0; i < laneNotes.Length; i++)
+        for (int i = 0; i < laneNotes.Length; i++)
         {
             laneNotes[i] = new List<NoteData>();
         }
@@ -31,7 +31,7 @@ public class NoteSpawner : MonoBehaviour
         {
             lanes[i].StartLaneSpawn();
         }
-        AudioManager.Instance.PlaySong();
+        audioManager.PlaySong();
         StartCoroutine(SetStarPower());
     }
     private IEnumerator SetStarPower()
