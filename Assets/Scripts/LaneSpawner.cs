@@ -43,9 +43,9 @@ public class LaneSpawner : MonoBehaviour
         if (holdTime > 0)
         {
             GameObject heldNote = (GameObject)Instantiate(heldNotePrefab, transform.position, heldNotePrefab.transform.rotation);
+            heldNote.GetComponent<HeldNote>().note = currentNote;
             heldNote.GetComponent<Renderer>().material = setMaterial;
             heldNote.transform.localScale = new Vector3(heldNote.transform.localScale.x, heldNote.transform.localScale.y, holdTime * movementSpeed.moveSpeed);
-            heldNote.transform.position = transform.position;
             heldNote.GetComponent<HeldNote>().setMaterial = setMaterial;
             heldNote.GetComponent<HeldNote>().specialMaterial = specialMaterial;
         }

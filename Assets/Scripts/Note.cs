@@ -13,14 +13,14 @@ public class Note : MonoBehaviour
     [Header("Particle Settings")]
     public ParticleSystem hitParticles; // Assign in Inspector
 
-    private bool canBeHit = false;
-    private bool hasBeenHit = false;
+    public bool canBeHit = false;
+    public bool hasBeenHit = false;
     private bool particlesInitialized = false;
 
     public Material setMaterial;    // Set material of note
     public Material specialMaterial;   // Set material of special notes
     public new MeshRenderer renderer;
-    private NoteSpawner spawner;
+    public NoteSpawner spawner;
 
     void Start()
     {
