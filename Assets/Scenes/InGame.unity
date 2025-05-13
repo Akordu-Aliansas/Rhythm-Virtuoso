@@ -1240,7 +1240,6 @@ MonoBehaviour:
   menuButton: {fileID: 1039913712}
   audioManager: {fileID: 463679590}
   scoreManager: {fileID: 2143289010}
-  highscoreUpdate: {fileID: 465995042}
 --- !u!114 &465995042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3635,22 +3634,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  bpms: 78000000a00000008c000000780000007800000078000000
+  bpms: 78000000a00000008c0000006b000000750000005c000000
   resolutions: c0000000c0000000c0000000c0000000c0000000c0000000
   audioTracks:
   - {fileID: 8300000, guid: 00006e87c47d0d846b4908cac561555d, type: 3}
   - {fileID: 8300000, guid: 157a86a3a1c89134ba53c309c23d58a0, type: 3}
   - {fileID: 8300000, guid: 3ec1e9610b5624042b76bd8afa25efdc, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 32a2264cca8291240bac2c3b94ef7d86, type: 3}
+  - {fileID: 8300000, guid: f72d66d6fbc45bb4fb0ac087b7dc3dbb, type: 3}
+  - {fileID: 8300000, guid: b36205ded8978a441823fccddd236745, type: 3}
   charts:
   - {fileID: 4900000, guid: 9a103f2d27b841b41ad3ae5ab92a3c13, type: 3}
   - {fileID: 4900000, guid: 56e4029db35395f43b08cff4a9a3f5d8, type: 3}
   - {fileID: 4900000, guid: 2f3dcffa6e0e27347b528810b2038f3d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4900000, guid: f2a217e0b9dd184449cc9ff100778257, type: 3}
+  - {fileID: 4900000, guid: 717776b92730a9945a6d02416540a9e9, type: 3}
+  - {fileID: 4900000, guid: 8682aeb9b6e5b1d4a9846b942d8c319b, type: 3}
   tickRate: {fileID: 11400000, guid: d4e8dd56ed21c6d49bc25393c319f314, type: 2}
   audioManager: {fileID: 463679590}
   parser: {fileID: 748288925}

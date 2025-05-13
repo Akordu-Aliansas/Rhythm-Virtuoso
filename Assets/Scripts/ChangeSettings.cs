@@ -44,7 +44,8 @@ public class ChangeSettings : MonoBehaviour
     }
     public void SetVolume(float volume)
     {
-        mixer.SetFloat("MainVolume", Mathf.Log10(Math.Abs(volume)) * -20);
+        mixer.SetFloat("MainVolume", volume);
+        //mixer.SetFloat("MainVolume", Mathf.Log10(Math.Abs(volume)) * -20);
     }
     public void SetQuality(int qualityIndex)
     {
