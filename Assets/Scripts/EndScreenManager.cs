@@ -15,7 +15,6 @@ public class EndScreenManager : MonoBehaviour
     [Header("Gameplay References")]
     [Tooltip("Drag your AudioManager GameObject here")]
     public AudioManager audioManager;
-
     [Tooltip("Your ScoreManager component")]
     public ScoreManager scoreManager;
 
@@ -26,12 +25,9 @@ public class EndScreenManager : MonoBehaviour
     void Start()
     {
         endScreenUI.SetActive(false);
-
-        // If you forgot to drag it in, fall back to the singleton:
         if (audioManager == null)
             audioManager = AudioManager.Instance;
 
-        // Now grab the AudioSource that was added at runtime:
         musicSource = audioManager.MusicSource;
 
         retryButton.onClick.AddListener(OnRetry);
@@ -40,14 +36,19 @@ public class EndScreenManager : MonoBehaviour
 
     void Update()
     {
-        if (hasEnded || musicSource == null)
+        if (hasEnded || musicSource == null || musicSource.clip == null)
             return;
 
         if (!songStarted && musicSource.isPlaying)
             songStarted = true;
 
-        if (songStarted && !musicSource.isPlaying)
+        
+        if (songStarted
+            && musicSource.time >= musicSource.clip.length - 0.05f
+            && Time.timeScale > 0f)
+        {
             ShowEndScreen();
+        }
     }
 
     private void ShowEndScreen()

@@ -3103,6 +3103,7 @@ MonoBehaviour:
   - {fileID: 511951305}
   - {fileID: 2049652834}
   audioMgr: {fileID: 463679590}
+  endScreenUI: {fileID: 312005571}
 --- !u!1 &1193732376
 GameObject:
   m_ObjectHideFlags: 0

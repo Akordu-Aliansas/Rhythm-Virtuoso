@@ -10,10 +10,13 @@ public class PauseManager : MonoBehaviour
     [Tooltip("Drag in all of your InputManager components here (one per lane)")]
     public InputManager[] inputManagers;
 
-    private bool isPaused = false;
     [Tooltip("Drag your in-scene AudioManager here")]
     public AudioManager audioMgr;
 
+    [Tooltip("Assign your End-Screen UI panel here")]
+    public GameObject endScreenUI;
+
+    private bool isPaused = false;
 
     void Start()
     {
@@ -22,6 +25,10 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
+        // if the song has just ended and the end-screen is up, ignore Escape
+        if (endScreenUI != null && endScreenUI.activeSelf)
+            return;
+
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
             TogglePause();
     }
