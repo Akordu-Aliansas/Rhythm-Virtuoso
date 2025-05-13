@@ -88,9 +88,9 @@ public class InputManager : MonoBehaviour
     {
         switch (accuracy)
         {
-            case HitAccuracy.Perfect: return 100;
-            case HitAccuracy.Good: return 75;
-            default: return 50;
+            case HitAccuracy.Perfect: return 35;
+            case HitAccuracy.Good: return 30;
+            default: return 25;
         }
     }
 
