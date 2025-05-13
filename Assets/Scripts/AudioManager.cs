@@ -62,4 +62,17 @@ public class AudioManager : MonoBehaviour
     {
         return musicSource.time;
     }
+
+    public void PauseSong()
+    {
+        if (musicSource.isPlaying)
+            musicSource.Pause();
+    }
+
+    public void ResumeSong()
+    {
+        if (!musicSource.isPlaying)
+            musicSource.UnPause();
+    }
+
 }
