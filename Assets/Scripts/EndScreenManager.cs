@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -36,6 +36,12 @@ public class EndScreenManager : MonoBehaviour
 
     void Update()
     {
+
+        if (musicSource == null && audioManager != null && audioManager.MusicSource != null)
+        {
+            musicSource = audioManager.MusicSource;
+        }
+
         if (hasEnded || musicSource == null || musicSource.clip == null)
             return;
 
