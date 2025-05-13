@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &247378534
 RectTransform:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1110475662
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Artist - song name, duration
+  m_text: Basshunter - DotA, 3.56
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 488f39aadd608a44fa6a126e1b825b73, type: 2}
   m_sharedMaterial: {fileID: -3409365254279062326, guid: 488f39aadd608a44fa6a126e1b825b73, type: 2}
@@ -1361,7 +1361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1359868882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1712,7 +1712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1572852428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2116,7 +2116,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Artist - song name, duration
+  m_text: Linkin Park - IGYEIH, 3.29
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 488f39aadd608a44fa6a126e1b825b73, type: 2}
   m_sharedMaterial: {fileID: -3409365254279062326, guid: 488f39aadd608a44fa6a126e1b825b73, type: 2}
