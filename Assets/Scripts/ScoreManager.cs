@@ -7,6 +7,9 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreText;  // The UI Text object that will display the score.
     private float score = 0;  // The player's score.
 
+    // Public getter for other scripts:
+    public int CurrentScore => Mathf.RoundToInt(score);
+
     // This function will be called to update the score.
     public void AddScore(float points)
     {
