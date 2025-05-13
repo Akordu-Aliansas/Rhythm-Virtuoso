@@ -62,6 +62,8 @@ public class EndScreenManager : MonoBehaviour
         hasEnded = true;
         Time.timeScale = 0f;
 
+        GetComponent<HighScoreUpdate>().AddNewEntry(scoreManager.CurrentScore);
+
         headerText.text = "Song Complete!";
         scoreText.text = $"Score: {scoreManager.CurrentScore}";
 

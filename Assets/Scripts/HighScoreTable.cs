@@ -28,7 +28,7 @@ public class HighScoreTable : MonoBehaviour
     }
     public void ChangePage(bool next)
     {
-        foreach (Transform transform in transformList) Destroy(transform);
+        foreach (Transform transform in transformList) Destroy(transform.gameObject);
         if (next && songID < 5) songID++;
         else if (!next && songID > 0) songID--;
         transformList = new List<Transform>();
