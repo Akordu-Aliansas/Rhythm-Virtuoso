@@ -75,4 +75,9 @@ public class AudioManager : MonoBehaviour
             musicSource.UnPause();
     }
 
+    /// <summary>
+    /// The AudioSource that plays the song clip (added in Awake).
+    /// </summary>
+    public AudioSource MusicSource => musicSource;
+
 }
