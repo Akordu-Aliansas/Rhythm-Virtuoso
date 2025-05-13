@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class HighScoreTable : MonoBehaviour
 {
+    public int songID;
     private Transform container;
     private Transform template;
     private List<HighscoreEntry> entryList;
@@ -18,9 +19,9 @@ public class HighScoreTable : MonoBehaviour
         container = transform.Find("Entries");
         template = container.Find("Template");
         template.gameObject.SetActive(false);
-        string jsonString = PlayerPrefs.GetString("highscores");
-        Highscores scores = JsonUtility.FromJson<Highscores>(jsonString);
         transformList = new List<Transform>();
+        string jsonString = PlayerPrefs.GetString("highscores"+songID);
+        Highscores scores = JsonUtility.FromJson<Highscores>(jsonString);
         foreach (HighscoreEntry entry in scores.entryList) AddEntry(entry, container, transformList);
     }
     private void AddEntry(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
@@ -35,18 +36,7 @@ public class HighScoreTable : MonoBehaviour
         entry.Find("Date").GetComponent<TMP_Text>().text = DateTime.FromBinary(highscoreEntry.date).ToString("d");
         transformList.Add(entry);
     }
-    private void AddNewEntry(int score)
-    {
-        HighscoreEntry entry = new HighscoreEntry { score = score, date = DateTime.Now.ToBinary() };
-        string jsonString = PlayerPrefs.GetString("highscores");
-        Highscores scores = JsonUtility.FromJson<Highscores>(jsonString);
-        scores.entryList.Add(entry);
-        scores.entryList.Sort();
-        if (scores.entryList.Count > 9) scores.entryList.RemoveAt(9);
-        string json = JsonUtility.ToJson(scores);
-        PlayerPrefs.SetString("highscores", json);
-        PlayerPrefs.Save();
-    }
+    
     private class Highscores { public List<HighscoreEntry> entryList; }
     [Serializable]
     private class HighscoreEntry : IComparable<HighscoreEntry>
