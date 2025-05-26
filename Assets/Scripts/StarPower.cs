@@ -17,7 +17,7 @@ public class StarPower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        slider.fillAmount = currentValue / (incrementValue * 4);
+        //slider.fillAmount = currentValue / (incrementValue * 4);
         if (isActive)
         {
             if (currentValue <= 0) { isActive = false; currentValue = 0; }
