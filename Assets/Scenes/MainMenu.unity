@@ -202,6 +202,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 981445806}
+        m_TargetAssemblyTypeName: UIButtonSFXManager, Assembly-CSharp
+        m_MethodName: PlayDefaultSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1629392867}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: ChangeToHighScoreScene
@@ -910,6 +922,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 981445806}
+        m_TargetAssemblyTypeName: UIButtonSFXManager, Assembly-CSharp
+        m_MethodName: PlayDefaultSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1629392867}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: ChangeToGameScene
@@ -1188,6 +1212,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &981445806 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6593709727332256463, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+  m_PrefabInstance: {fileID: 9065782653305468456}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e992d5e9c018d314aa1b4e40e7e7fcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1027827817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +1770,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 981445806}
+        m_TargetAssemblyTypeName: UIButtonSFXManager, Assembly-CSharp
+        m_MethodName: PlayCancelSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1629392867}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: doExitGame
@@ -1868,6 +1915,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 981445806}
+        m_TargetAssemblyTypeName: UIButtonSFXManager, Assembly-CSharp
+        m_MethodName: PlayDefaultSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1629392867}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: ChangeToOptionScene
@@ -2142,6 +2201,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 981445806}
+        m_TargetAssemblyTypeName: UIButtonSFXManager, Assembly-CSharp
+        m_MethodName: PlayConfirmSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1629392867}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
         m_MethodName: ChangeToSelectScene
@@ -2328,6 +2399,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094154045}
   m_CullTransparentMesh: 1
+--- !u!1001 &9065782653305468456
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 762.47437
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 281.63403
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -507.6062
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 706865449969465222, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1981072648857845751, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: m_Name
+      value: UI_SFX_Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6593709727332256463, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6351926e11ce6c4428cfe0cb523d2487, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2337,3 +2469,4 @@ SceneRoots:
   - {fileID: 1629392866}
   - {fileID: 493338952}
   - {fileID: 1067349681}
+  - {fileID: 9065782653305468456}

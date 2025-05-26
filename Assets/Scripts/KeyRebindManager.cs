@@ -174,14 +174,19 @@ public class KeyRebindManager : MonoBehaviour
 
     Key GetPressedKey()
     {
-        foreach (Key key in System.Enum.GetValues(typeof(Key)))
+        // Check only valid, physical keys instead of all enum values
+        var keyboard = Keyboard.current;
+        if (keyboard == null) return Key.None;
+
+        // Check all physical keys on the keyboard
+        foreach (var key in keyboard.allKeys)
         {
-            if (key == Key.None) continue;
-            if (Keyboard.current[key] != null && Keyboard.current[key].wasPressedThisFrame)
+            if (key.wasPressedThisFrame)
             {
-                return key;
+                return key.keyCode;
             }
         }
+
         return Key.None;
     }
     IEnumerator FadeOutWarning()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -72,12 +73,24 @@ public class EndScreenManager : MonoBehaviour
 
     private void OnRetry()
     {
+        StartCoroutine(DelayedRetry());
+    }
+
+    private IEnumerator DelayedRetry()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnMenu()
     {
+        StartCoroutine(DelayedMenu());
+    }
+
+    private IEnumerator DelayedMenu()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }

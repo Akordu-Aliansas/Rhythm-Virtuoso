@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -59,8 +60,13 @@ public class PauseManager : MonoBehaviour
 
     public void QuitToMenu()
     {
-        Time.timeScale = 1f;            // make sure timeÅfs back to normal
-        SceneManager.LoadScene("MainMenu");  // your menu scene name
+        StartCoroutine(DelayedQuitToMenu());
     }
 
+    private IEnumerator DelayedQuitToMenu()
+    {
+        yield return new WaitForSecondsRealtime(0.25f);  // Uses real time, not game time
+        Time.timeScale = 1f;            // make sure time's back to normal
+        SceneManager.LoadScene("MainMenu");  // your menu scene name
+    }
 }
