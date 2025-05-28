@@ -66,15 +66,15 @@ Pagrindinis meniu:
 
 Veiksmas	Klavišas
 
-1-oji nata:	```A```
+1-oji nata:	```D```
 
-2-oji nata: ```S```
+2-oji nata: ```F```
 
-3-ioji nata: ```D```
+3-ioji nata: ```J```
 
-4-oji nata:	```F```
+4-oji nata:	```K```
 
-5-oji nata:	```G```
+5-oji nata:	```L```
 
 Valdymo klavišus taip pat galima pakeisti ```Options``` dalyje.
 ## Žaidimo principas
